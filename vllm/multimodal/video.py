@@ -220,6 +220,12 @@ class VideoBackend(VideoLoader):
     ) -> list[int]:
         total_frames_num = source.total_frames_num
         duration = source.duration
+        # A container that reports no duration leaves this at 0/None, which means
+        # "unknown", not "a zero-second clip". Deriving it from the frame count is
+        # what DynamicVideoBackend already does; otherwise the floor(duration*fps)
+        # cap below collapses any length clip to a single frame.
+        if not duration and source.original_fps:
+            duration = total_frames_num / source.original_fps
         num_frames = target.num_frames
         fps = target.fps
         # resample video to target num_frames and fps
