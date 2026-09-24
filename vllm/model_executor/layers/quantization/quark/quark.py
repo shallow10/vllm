@@ -829,7 +829,8 @@ class QuarkConfig(QuantizationConfig):
 
         layer_type = cast(str, module if isinstance(module, type) else type(module))
         layer_type_quant_config = cast(
-            dict[str, Any], self.quant_config.get("layer_type_quant_config")
+            dict[str, Any],
+            self.quant_config.get("layer_type_quant_config") or {},
         )
         global_quant_config = cast(
             dict[str, Any], self.quant_config.get("global_quant_config")
