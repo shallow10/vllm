@@ -1542,7 +1542,7 @@ class TimedTrace(BenchmarkDataset):
                     f"Input length field '{self.label_input_length}' "
                     f"not found in trace entry. "
                     f"Available fields: {list(entry.keys())}. "
-                    f"Use --label-input-length to specify the correct "
+                    f"Use --timed-trace-label-input-length to specify the correct "
                     f"field name."
                 )
             new_output_len = entry.get(self.label_output_length)
@@ -1551,7 +1551,7 @@ class TimedTrace(BenchmarkDataset):
                     f"Output length field '{self.label_output_length}' "
                     f"not found in trace entry. "
                     f"Available fields: {list(entry.keys())}. "
-                    f"Use --label-output-length to specify the correct "
+                    f"Use --timed-trace-label-output-length to specify the correct "
                     f"field name."
                 )
             prompt_ids = self._expand_prompt(
@@ -1564,7 +1564,7 @@ class TimedTrace(BenchmarkDataset):
                 raise ValueError(
                     f"Timestamp field '{self.label_ts}' not found in trace entry. "
                     f"Available fields: {list(entry.keys())}. "
-                    f"Use --label-timestamp to specify the correct field name."
+                    f"Use --timed-trace-label-timestamp to specify the correct field name."
                 )
             timestamp = float(ts_value) * self.sec_multiplier
 
