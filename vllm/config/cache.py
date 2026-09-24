@@ -298,8 +298,8 @@ class CacheConfig:
             "effective_attention_block_size",
             "kv_cache_size_tokens",
             "kv_cache_max_concurrency",
-            # Feature toggles not impacting compiled graph shape
-            "kv_sharing_fast_prefill",
+            # kv_sharing_fast_prefill gates @support_torch_compile(enable_if=...)
+            # on the Gemma3n/Gemma4 decoder modules, so it is graph relevant.
             "swa_bounded_replay",
         }
 
